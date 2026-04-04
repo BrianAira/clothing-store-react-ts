@@ -1,0 +1,35 @@
+@import "tailwindcss";
+@source "../node_modules/@heroui/theme/dist/**/*.{js,ts,jsx,tsx}";
+
+/* Registra el plugin de HeroUI */
+@plugin "./hero.ts";
+/* Esto obliga a Tailwind a obedecer a nuestro botón y no al sistema */
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* Esto le dice al navegador: por defecto, mi web es CLARA */
+:root {
+  color-scheme: light;
+}
+
+/* @source "../node_modules/@heroui/theme/dist*.{js,ts,jsx,tsx}"; */
+@layer base {
+  /* Forzamos a que Tailwind genere los colores de HeroUI aunque no los vea */
+  .bg-success-50 { background-color: var(--heroui-success-50); }
+  .bg-danger-50 { background-color: var(--heroui-danger-50); }
+  .bg-primary-50 { background-color: var(--heroui-primary-50); }
+}
+
+@theme {
+  /* Definimos los colores de marca */
+  --color-brand-primary: #4f46e5;    /* Un índigo sólido */
+  --color-brand-secondary: #10b981;  /* Un verde esmeralda */
+  --color-brand-accent: #f59e0b;     /* Ámbar para ofertas */
+  
+  --color-main-primary:#dbf0dd;
+  --color-main-secondary:#8cb79b;
+  --color-main-terciary:#235347;
+  --color-main-fouriary:#173831;
+  --color-main-fiviary:#051f20;
+  /* Puedes definir incluso gradientes específicos */
+  --background-image-hero-gradient: linear-gradient(to right, var(--color-brand-secondary), #059669);
+}
